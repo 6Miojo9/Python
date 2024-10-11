@@ -1,3 +1,0 @@
-# Python
-
-ola plano
