@@ -6,14 +6,12 @@ def main(page: Page):
         animation_duration=300,
         tabs=[
             Tab(
-                text="Contatos",
-                
+                text="Contatos"
             ),
             Tab(
                 text="Adicionar"
             )
-        ]
-        
+        ]        
     )
     page.add(table)
 
