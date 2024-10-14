@@ -21,5 +21,4 @@ def main(page: Page):
         expand=1,
     )
     page.add(table)
-    
 app(main)
