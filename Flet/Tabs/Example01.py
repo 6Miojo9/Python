@@ -16,7 +16,7 @@ def main(page: Page):
                 content = Container(
                     content = Text(value="pasta 02"), alignment=alignment.center
                 ),
-            )
+            ),
         ],
         expand=1,
     )
