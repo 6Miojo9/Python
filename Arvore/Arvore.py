@@ -1,5 +1,3 @@
-import flet as ft
-
 class Arvore(): # Classes que cria da arvore e da raiz.
     def __init__(self, raiz):
         self.raiz = No(raiz) # Define a raiz com um novo Nó.
@@ -12,6 +10,7 @@ class No: # Classe que cria e adiciona novos Nós.
         self.nivel = 1 # Nivel do Nó (inicial: 1).
     
     def direito(self, valor): # Cria e adiciona o novo Nó para o ponteiro direito.
+        print(self.valor)
         self.direita = No(valor) # Define o novo no com o valor para a direito.
         self.nivel += self.direita.nivel # Adiciona o novo nivel para o Nó pai.
         
@@ -28,24 +27,24 @@ class No: # Classe que cria e adiciona novos Nós.
             self.esquerdo(valor) # Chama a função para o ponteiro esquerdo.
         elif valor <= self.valor:
             self.esquerda.novo_no(valor) # Re-chama a função para adicionar o Nó para o no filho já apontado para a esquerda.
-        
-        if self.direita.nivel > (self.esquerda.nivel + 1) or (self.direita.nivel >= 2 and self.esquerda.nivel == None):
-            print(f"O direito é maior {self.direita.nivel}.")
-        elif self.esquerda.nivel > (self.direita.nivel + 1) or (self.esquerda.nivel >= 2 and self.direita.nivel == None):
-            print(f"O esquerdo é maior {self.esquerda.nivel}.")
+
+        if self.direita != None and self.esquerda == None: # Verifica se o Nó pai está balanciado.
+            if self.direita.nivel == 2:
+                print(f"O Nó {self.valor} tem o lado direito desbalanciado: {self.direita.nivel}.")
         else:
-            print(f"Os dos são iguais: direita {self.direita.nivel}, esquerda: {self.esquerda.nivel}.")
+            if self.esquerda.nivel == 2:
+                print(f"O Nó {self.valor} tem o lado esquerdo desbalanciado: {self.esquerda.nivel}.")
+    
+    def printar(self):
+        if self.esquerda != None:
+            self.esquerda.printar()
+        elif self.direita != None:
+            self.direita.printar()
+        print(self.valor, self.nivel)
 
 arvore = Arvore(int(input("Digite o primeiro no"))) #Variavel que guarda a arvore
 
-for i in range(6):
+for i in range(2):
     arvore.raiz.novo_no(int(input("Digite:"))) # Recebe o valor para o novo Nó e insere a partir da raiz até a posição correta na arvore.
-
-
-# def main(page: ft.Page):
-#     entrada_no = ft.TextField(label="Digite o valor:")
-#     page.add(
-#         entrada_no
-#     )
-
-# ft.app(target=main)
+arvore.raiz.printar()
+print(arvore.raiz.nivel)
