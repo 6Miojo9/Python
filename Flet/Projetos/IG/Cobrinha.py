@@ -98,7 +98,8 @@ class Cobra():
         if self.posit.bgcolor == ft.colors.RED:
             self.tamanho += 1
             self.fruta.trocar()
-            
+        else:
+            self.comp()
         self.posit.bgcolor = ft.colors.GREEN
         self.comp()
             
