@@ -45,6 +45,7 @@ class Cobra():
         self.posit = self.tab.controls[self.posy].controls[self.posx]
         self.fruta = fruta
         self.tamanho = 1
+        self.aux = 0
         self.corpo = list()
         self.propriedades_posicao()
 
@@ -87,7 +88,7 @@ class Cobra():
     def comp(self):
         print("corpo")
         for i in self.corpo:
-            print(i.tamanho)
+            print("linha: " + str(i.linha) + "; Coluna: " + str(i.coluna) + ": " + str(i.tamanho))
             i.tamanho -= 1
             if i.tamanho == 0:
                 i.corpo()
@@ -101,7 +102,6 @@ class Cobra():
         self.posit.bgcolor = ft.colors.GREEN
         self.comp()
             
-
 class Fruta():
     def __init__(self, tab, page):
         super().__init__()
